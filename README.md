@@ -1,2 +1,2 @@
-# mssetlist
-Gerenciado de Setlists para banda
+# MsSetlist
+Gerenciador de Setlists para banda
