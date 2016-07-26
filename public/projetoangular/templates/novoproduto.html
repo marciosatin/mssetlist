@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Novo produto <a href="/#/produtos/" class="pull-right">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a></h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <form class="form-horizontal" ng-submit="add(item)">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" ng-model="item.nome" class="form-control" id="nomeProduto" placeholder="Nome do produto" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label">Categoria</label>
+                        <select required name="categoria" id="categoriaProduto" 
+                                class="form-control" ng-model="item.categoriaId"
+                                ng-options="categoria.id as categoria.nome for categoria in categorias">
+                            <option value="">Selecione a categoria</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" ng-model="item.descricao" class="form-control" id="descProduto" placeholder="Descrição do produto" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-default">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

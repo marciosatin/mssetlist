@@ -1,0 +1,80 @@
+<div class="panel panel-default" ng-init="loadData()">
+    <div class="panel-heading">
+        <h3 class="panel-title">Nova música <a href="/#/musica/" class="pull-right">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a></h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <form class="form-horizontal" ng-submit="add(item)">
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" ng-model="item.stNome" class="form-control" id="nomeMusica" placeholder="Nome da música" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label">Artista
+                            <a href="#" title="Novo artista">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </a>
+                        </label>
+                        <select required name="artista" id="artistaMusica" 
+                                class="form-control" ng-model="item.cdArtista"
+                                ng-options="artista.cd_artista as artista.st_nome for artista in artistas">
+                            <option value="">Selecione o artista</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label">Gênero
+                            <a href="#" title="Novo gênero">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </a>
+                        </label>
+                        <select required name="genero" id="generoMusica" 
+                                class="form-control" ng-model="item.cdGenero"
+                                ng-options="genero.cd_genero as genero.st_nome for genero in generos">
+                            <option value="">Selecione o gênero</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" ng-model="item.stLinkC" class="form-control" id="linkCMusica" placeholder="Link para cifra">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="url" ng-model="item.stLinkV" class="form-control" id="linkVMusica" placeholder="Link para video">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="url" ng-model="item.stTom" class="form-control" id="tomMusica" placeholder="Tom">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input type="text" ng-model="item.stTempoDuracao" class="form-control" id="tempoDuracaoMusica" placeholder="Duração">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="control-label">Instrumentos</label>
+                        <ul>
+                            <li>Violão</li>
+                            <li>Guitarra</li>
+                            <li>Bateria</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-default">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

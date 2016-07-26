@@ -1,0 +1,18 @@
+{
+    "name": "MSetlist",
+    "description": "Gerenciador de SetList para Banda",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zendframework": "2.2.*",
+        "doctrine/doctrine-orm-module": "0.7.*",
+        "hounddog/doctrine-data-fixture-module": "0.0.*",
+        "sp/jms-serializer-module": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

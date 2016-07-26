@@ -1,0 +1,25 @@
+.ui-notify {
+    background-color: #F2DEDE;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ui-notify-title {
+    color: #AF4341;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.ui-notify-msg {
+    color: #AF4341; 
+}
+
+.ui-preloader {
+    text-align: center;
+}
+
+.ui-preloader img {
+    width: 75px;
+}
