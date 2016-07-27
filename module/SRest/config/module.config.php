@@ -22,7 +22,7 @@ return array(
         'invokables' => array(
             'musica' => 'SRest\Controller\MusicaController',
             'artista' => 'SRest\Controller\ArtistaController',
-            'produto' => 'SRest\Controller\ProdutoController'
+            'genero' => 'SRest\Controller\GeneroController'
         )
     ),
     

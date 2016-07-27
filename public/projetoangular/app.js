@@ -3,11 +3,11 @@ angular.module('myApp', ['ngRoute', 'myApp.controllers'])
         $routeProvider
                 .when('/musica', {
                     templateUrl: 'projetoangular/templates/musica.html',
-                    controller: 'MusicaCtrl'
+                    controller: 'musicaCtrl'
                 })
                 .when('/musica/novo/', {
                     templateUrl: 'projetoangular/templates/novamusica.html',
-                    controller: 'MusicaCtrl'
+                    controller: 'musicaCtrl'
                 })
                 .when('/categorias/editar/:id', {
                     templateUrl: 'projetoangular/templates/editarcategoria.html',

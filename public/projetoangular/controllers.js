@@ -1,18 +1,23 @@
 'use strict';
 
-angular.module('myApp.controllers', ['ngRoute'])
-        .controller('MusicaCtrl', ['$scope', 'MusicaSrv', '$location', '$routeParams',
-            function($scope, MusicaSrv, $location, $routeParams) {
+angular.module('myApp.controllers', ['ngRoute', 'myApp.services'])
+        .controller('musicaCtrl', ['$scope', 'musicaSrv', 'artistaSrv', 'generoSrv', '$location', '$routeParams',
+            function($scope, musicaSrv, artistaSrv, generoSrv, $location, $routeParams) {
                 $scope.load = function() {
-                    $scope.registros = MusicaSrv.query();
+                    $scope.registros = musicaSrv.query();
+                };
+
+                $scope.loadData = function() {
+                    $scope.artistas = artistaSrv.query();
+                    $scope.generos = generoSrv.query();
                 };
 
                 $scope.get = function() {
-                    $scope.item = MusicaSrv.get({id: $routeParams.id});
+                    $scope.item = musicaSrv.get({id: $routeParams.id});
                 };
 
                 $scope.add = function(item) {
-                    $scope.result = MusicaSrv.save(
+                    $scope.result = musicaSrv.save(
                             {},
                             item,
                             function(data, status, headers, config) {
@@ -25,7 +30,7 @@ angular.module('myApp.controllers', ['ngRoute'])
                 };
 
                 $scope.editar = function(item) {
-                    $scope.result = MusicaSrv.update(
+                    $scope.result = musicaSrv.update(
                             {id: $routeParams.id},
                     item,
                             function(data, status, headers, config) {
@@ -39,7 +44,7 @@ angular.module('myApp.controllers', ['ngRoute'])
 
                 $scope.delete = function(id) {
                     if (confirm("Deseja realmente excluir o registro?")) {
-                        MusicaSrv.remove(
+                        musicaSrv.remove(
                                 {id: id},
                         {},
                                 function(data, status, headers, config) {
@@ -50,5 +55,11 @@ angular.module('myApp.controllers', ['ngRoute'])
                                 }
                         );
                     }
+                };
+            }])
+        .controller('artistaCtrl', ['$scope', 'artistaSrv', '$location', '$routeParams',
+            function($scope, artistaSrv, $location, $routeParams) {
+                $scope.load = function() {
+                    $scope.registros = artistaSrv.query();
                 };
             }]);

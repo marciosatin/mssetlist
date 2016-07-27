@@ -41,6 +41,11 @@ class Module
                     $em = $sm->get('Doctrine\ORM\EntityManager');
                     $artistaService = new \Application\Service\Artista($em);
                     return $artistaService;
+                },
+                'Application\Service\Genero' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $generoService = new \Application\Service\Genero($em);
+                    return $generoService;
                 }
             )
         );
