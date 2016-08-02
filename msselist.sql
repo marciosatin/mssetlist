@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `tbmusicaartista` (
   `cdMusicaArtista` INT NOT NULL AUTO_INCREMENT,
   `cdArtista` INT NOT NULL,
   `cdMusica` INT NOT NULL,
-  `stLinkVideo` VARCHAR(45) NULL,
+  `stLinkVideo` VARCHAR(255) NULL,
   `stTom` VARCHAR(5) NULL,
   `dtCadastro` TIMESTAMP NULL,
   `dtAlteracao` TIMESTAMP NULL,

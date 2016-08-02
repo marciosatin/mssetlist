@@ -7,24 +7,34 @@ use Zend\Mvc\Controller\AbstractRestfulController;
 class MusicaController extends AbstractRestfulController
 {
 
-    public function getList() {
+    public function getList()
+    {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $data = $em->getRepository('Application\Entity\Musica')->findAll();
+        $data = $em->getRepository('Application\Entity\MusicaArtista')->findAll();
+
+//        die('<pre>' . var_dump($data) . " File: " . __FILE__ . " Linha: " . __LINE__ . '</pre>');
+
         return $data;
     }
 
-    public function get($id) {
+    public function get($id)
+    {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $data = $em->getRepository('Application\Entity\Musica')->find($id);
         return $data;
     }
 
-    public function create($data) {
+    public function create($data)
+    {
         $serviceMusica = $this->getServiceLocator()->get('Application\Service\Musica');
         $nome = $data['stNome'];
 
         $musica = $serviceMusica->insert($nome);
-        return ($musica) ? $musica : array('success' => false);
+
+        $serviceMusicaArtista = $this->getServiceLocator()->get('Application\Service\MusicaArtista');
+        $musicaArtista = $serviceMusicaArtista->insert($musica, $data);
+
+        return ($musicaArtista) ? $musicaArtista : array('success' => false);
     }
 
     public function update($cdMusica, $data)

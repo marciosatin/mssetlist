@@ -37,6 +37,11 @@ class Module
                     $musicaService = new \Application\Service\Musica($em);
                     return $musicaService;
                 },
+                'Application\Service\MusicaArtista' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $musicaArtistaService = new \Application\Service\MusicaArtista($em);
+                    return $musicaArtistaService;
+                },
                 'Application\Service\Artista' => function($sm) {
                     $em = $sm->get('Doctrine\ORM\EntityManager');
                     $artistaService = new \Application\Service\Artista($em);
