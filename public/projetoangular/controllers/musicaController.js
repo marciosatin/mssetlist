@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('myApp.controllers', ['ngRoute', 'myApp.services'])
+angular.module('myApp.musica.controller', [
+    'myApp.musica.service',
+    'myApp.artista.service',
+    'myApp.genero.service'])
         .controller('musicaCtrl', ['$scope', 'musicaSrv', 'artistaSrv', 'generoSrv', '$location', '$routeParams',
             function($scope, musicaSrv, artistaSrv, generoSrv, $location, $routeParams) {
                 $scope.load = function() {
@@ -55,11 +58,5 @@ angular.module('myApp.controllers', ['ngRoute', 'myApp.services'])
                                 }
                         );
                     }
-                };
-            }])
-        .controller('artistaCtrl', ['$scope', 'artistaSrv', '$location', '$routeParams',
-            function($scope, artistaSrv, $location, $routeParams) {
-                $scope.load = function() {
-                    $scope.registros = artistaSrv.query();
                 };
             }]);

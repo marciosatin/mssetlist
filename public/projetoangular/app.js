@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngRoute', 'myApp.controllers'])
+angular.module('myApp', ['ngRoute', 'myApp.musica.controller'])
        .config(['$routeProvider', function($routeProvider) {
         $routeProvider
                 .when('/musica', {
