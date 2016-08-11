@@ -17,6 +17,7 @@ angular.module('myApp.musica.controller', [
 
                 $scope.get = function() {
                     $scope.item = musicaSrv.get({id: $routeParams.id});
+                    $scope.loadData();
                 };
 
                 $scope.add = function(item) {
@@ -37,7 +38,7 @@ angular.module('myApp.musica.controller', [
                             {id: $routeParams.id},
                     item,
                             function(data, status, headers, config) {
-                                $location.path('/categorias');
+                                $location.path('/musica');
                             },
                             function(data, status, headers, config) {
                                 alert('Erro ao editar registro' + data.messages[0]);

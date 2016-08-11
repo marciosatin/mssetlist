@@ -9,9 +9,9 @@ angular.module('myApp', ['ngRoute', 'myApp.musica.controller'])
                     templateUrl: 'projetoangular/templates/novamusica.html',
                     controller: 'musicaCtrl'
                 })
-                .when('/categorias/editar/:id', {
-                    templateUrl: 'projetoangular/templates/editarcategoria.html',
-                    controller: 'CategoriaCtrl'
+                .when('/musica/editar/:id', {
+                    templateUrl: 'projetoangular/templates/editarmusica.html',
+                    controller: 'musicaCtrl'
                 })
                 .when('/produtos', {
                     templateUrl: 'projetoangular/templates/produto.html',

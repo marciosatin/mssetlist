@@ -19,17 +19,17 @@ class MusicaArtista
     {
 
         $dataInsert = array(
-            'stLinkC' => $data['stLinkC'],
-            'stLinkV' => $data['stLinkV'],
-            'stTom' => $data['stTom'],
+            'stLinkC' => (string) $data['stLinkC'],
+            'stLinkV' => (string) $data['stLinkV'],
+            'stTom' => (string) $data['stTom'],
             'stTempoDuracao' => $data['stTempoDuracao']
         );
 
         $generoEntity = $this->em
-                ->getReference('Application\Entity\Genero', $data['cdGenero']);
+                ->getReference('Application\Entity\Genero', (int) $data['cdGenero']);
 
         $artistaEntity = $this->em
-                ->getReference('Application\Entity\Artista', $data['cdArtista']);
+                ->getReference('Application\Entity\Artista', (int) $data['cdArtista']);
 
 
         $musicaArtistaEntity = new MusicaArtistaEntity();
@@ -43,20 +43,35 @@ class MusicaArtista
 
         $this->em->persist($musicaArtistaEntity);
         $this->em->flush();
-        die('<pre>' . print_r('aqui blz', true) . " File: " . __FILE__ . " Linha: " . __LINE__ . '</pre>');
-
         return $musicaArtistaEntity;
     }
     
-    public function update(array $data) {
-        $musicaEntity = $this->em
-                ->getReference('Application\Entity\Musica', $data['cdMusica']);
-        $musicaEntity->setNome($data['stNome']);
+    public function update(MusicaEntity $musica, array $data) {
+        $musicaArtistaEntity = $this->em
+                ->getReference('Application\Entity\MusicaArtista', $data['cdMusicaArtista']);
+        $musicaArtistaEntity->setMusica($musica);
 
-        $this->em->persist($musicaEntity);
+        if (isset($data['generoId'])) {
+            $generoEntity = $this->em
+                ->getReference('Application\Entity\Genero', $data['generoId']);
+            $musicaArtistaEntity->setGenero($generoEntity);
+        }
+
+        if (isset($data['artistaId'])) {
+            $artistaEntity = $this->em
+                    ->getReference('Application\Entity\Artista', $data['artistaId']);
+            $musicaArtistaEntity->setArtista($artistaEntity);
+        }
+
+        $musicaArtistaEntity->setStLinkCifra($data['stLinkC']);
+        $musicaArtistaEntity->setStLinkVideo($data['stLinkV']);
+        $musicaArtistaEntity->setStTom($data['stTom']);
+        $musicaArtistaEntity->setStTempoDuracao($data['stTempoDuracao']);
+
+        $this->em->persist($musicaArtistaEntity);
         $this->em->flush();
         
-        return $musicaEntity;
+        return $musicaArtistaEntity;
     }
     
     public function delete($cdMusica)

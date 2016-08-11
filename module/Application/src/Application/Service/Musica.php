@@ -28,7 +28,7 @@ class Musica
     public function update(array $data) {
         $musicaEntity = $this->em
                 ->getReference('Application\Entity\Musica', $data['cdMusica']);
-        $musicaEntity->setNome($data['stNome']);
+        $musicaEntity->setStNome($data['stNome']);
 
         $this->em->persist($musicaEntity);
         $this->em->flush();
