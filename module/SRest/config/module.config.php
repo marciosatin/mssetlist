@@ -22,7 +22,8 @@ return array(
         'invokables' => array(
             'musica' => 'SRest\Controller\MusicaController',
             'artista' => 'SRest\Controller\ArtistaController',
-            'genero' => 'SRest\Controller\GeneroController'
+            'genero' => 'SRest\Controller\GeneroController',
+            'setlist' => 'SRest\Controller\SetlistController',
         )
     ),
     

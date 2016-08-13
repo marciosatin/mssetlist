@@ -47,6 +47,11 @@ class Module
                     $artistaService = new \Application\Service\Artista($em);
                     return $artistaService;
                 },
+                'Application\Service\Setlist' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $setListService = new \Application\Service\Setlist($em);
+                    return $setListService;
+                },
                 'Application\Service\Genero' => function($sm) {
                     $em = $sm->get('Doctrine\ORM\EntityManager');
                     $generoService = new \Application\Service\Genero($em);

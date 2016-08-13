@@ -15,26 +15,29 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/#/musica">Músicas</a></li>
+                        <li><a href="/#/musica">Músicas</a></li>
                         <!--<li><a href="/#/produtos">Produtos</a></li>-->
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-        <ui-preloader ng-show="loading"></ui-preloader>
-        <div ng-hide="loading">
-            <?php echo $this->content; ?>
-        </div>
-        <script src="/js/angular.min.js"></script>
-        <script src="/js/angular-route.min.js"></script>
-        <script src="/js/angular-resource.min.js"></script>
-        <script src="/projetoangular/app.js"></script>
-        <script src="/projetoangular/controllers/musicaController.js"></script>
-        <script src="/projetoangular/services/artistaService.js"></script>
-        <script src="/projetoangular/services/musicaService.js"></script>
-        <script src="/projetoangular/services/generoService.js"></script>
-        <script src="/projetoangular/directives/uiPreloaderDirective.js"></script>
-        <script src="/projetoangular/config/interceptorsConfig.js"></script>
-        <script src="/projetoangular/interceptors/loadingInterceptor.js"></script>
-    </body>
+    <ui-preloader ng-show="loading"></ui-preloader>
+    <div ng-hide="loading">
+        <?php echo $this->content; ?>
+    </div>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-resource.min.js"></script>
+    <script src="/js/geral.js"></script>
+    <script src="/projetoangular/app.js"></script>
+    <script src="/projetoangular/controllers/musicaController.js"></script>
+    <script src="/projetoangular/controllers/setlistController.js"></script>
+    <script src="/projetoangular/services/artistaService.js"></script>
+    <script src="/projetoangular/services/musicaService.js"></script>
+    <script src="/projetoangular/services/generoService.js"></script>
+    <script src="/projetoangular/services/setlistService.js"></script>
+    <script src="/projetoangular/directives/uiPreloaderDirective.js"></script>
+    <script src="/projetoangular/config/interceptorsConfig.js"></script>
+    <script src="/projetoangular/interceptors/loadingInterceptor.js"></script>
+</body>
 </html>

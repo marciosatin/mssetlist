@@ -1,6 +1,10 @@
-angular.module('myApp', ['ngRoute', 'myApp.musica.controller'])
+angular.module('myApp', ['ngRoute', 'myApp.musica.controller', 'myApp.setlist.controller'])
        .config(['$routeProvider', function($routeProvider) {
         $routeProvider
+                .when('/', {
+                    templateUrl: 'projetoangular/templates/setlist.html',
+                    controller: 'setlistCtrl'
+                })
                 .when('/musica', {
                     templateUrl: 'projetoangular/templates/musica.html',
                     controller: 'musicaCtrl'
@@ -12,10 +16,6 @@ angular.module('myApp', ['ngRoute', 'myApp.musica.controller'])
                 .when('/musica/editar/:id', {
                     templateUrl: 'projetoangular/templates/editarmusica.html',
                     controller: 'musicaCtrl'
-                })
-                .when('/produtos', {
-                    templateUrl: 'projetoangular/templates/produto.html',
-                    controller: 'ProdutoCtrl'
                 })
                 .when('/produtos/novo/', {
                     templateUrl: 'projetoangular/templates/novoproduto.html',
