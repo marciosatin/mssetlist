@@ -17,12 +17,17 @@ angular.module('myApp', ['ngRoute', 'myApp.musica.controller', 'myApp.setlist.co
                     templateUrl: 'projetoangular/templates/editarmusica.html',
                     controller: 'musicaCtrl'
                 })
-                .when('/produtos/novo/', {
-                    templateUrl: 'projetoangular/templates/novoproduto.html',
-                    controller: 'ProdutoCtrl'
+                .when('/setlist/novo/', {
+                    templateUrl: 'projetoangular/templates/novasetlist.html',
+                    controller: 'setlistCtrl'
                 })
-                .when('/produtos/editar/:id', {
-                    templateUrl: 'projetoangular/templates/editarproduto.html',
-                    controller: 'ProdutoCtrl'
-                });
+                .when('/setlist/musica/:id', {
+                    templateUrl: 'projetoangular/templates/setlistmusica.html',
+                    controller: 'setlistCtrl'
+                })
+                .when('/setlist/editar/:id', {
+                    templateUrl: 'projetoangular/templates/editarsetlist.html',
+                    controller: 'setlistCtrl'
+                })
+                ;
     }]);

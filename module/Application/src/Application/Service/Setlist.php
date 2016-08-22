@@ -15,24 +15,24 @@ class Setlist
 
     public function insert($stNome)
     {
-        $artistaEntity = new SetlistEntity();
-        $artistaEntity->setStNome($stNome);
+        $setlistEntity = new SetlistEntity();
+        $setlistEntity->setStNome($stNome);
 
-        $this->em->persist($artistaEntity);
+        $this->em->persist($setlistEntity);
         $this->em->flush();
 
-        return $artistaEntity;
+        return $setlistEntity;
     }
     
     public function update(array $data) {
-        $artistaEntity = $this->em
+        $setlistEntity = $this->em
                 ->getReference('Application\Entity\Setlist', $data['cdSetlist']);
-        $artistaEntity->setNome($data['stNome']);
+        $setlistEntity->setStNome($data['stNome']);
 
-        $this->em->persist($artistaEntity);
+        $this->em->persist($setlistEntity);
         $this->em->flush();
         
-        return $artistaEntity;
+        return $setlistEntity;
     }
     
     public function delete($cdSetlist)

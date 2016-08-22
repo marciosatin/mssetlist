@@ -32,10 +32,10 @@ class SetlistController extends AbstractRestfulController
         $serviceSetlist = $this->getServiceLocator()->get('Application\Service\Setlist');
 
         $param['cdSetlist'] = $cdSetlist;
-        $param['stNome'] = $data['stNome'];
+        $param['stNome'] = $data['st_nome'];
 
-        $artista = $serviceSetlist->update($param);
-        return ($artista) ? $artista : array('success' => false);
+        $setlist = $serviceSetlist->update($param);
+        return ($setlist) ? $setlist : array('success' => false);
     }
 
     public function delete($cdSetlist)

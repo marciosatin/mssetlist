@@ -1,0 +1,43 @@
+<!--<ui-notify title="Houve um erro!" message="error"></ui-notify>-->
+<div class="col-xs-12">
+    <div class="page-header" ng-init="get()">
+        <h1>Setlist: <small>{{item.st_nome}}</small></h1>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Músicas adicionadas
+                <a href="/#/musica/novo/" class="pull-right">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </h3>
+        </div>
+        <div class="panel-body">
+            <table class="table"> 
+                <thead> 
+                    <tr> 
+                        <th>#</th> 
+                        <th>Música</th> 
+                        <th>Link para cifra</th> 
+                        <th>Tom</th> 
+                        <th>Ação</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <tr ng-repeat="registro in registros"> 
+                        <td><a href="/#/musica/editar/{{registro.cd_musica_artista}}">{{registro.cd_musica_artista}}</a></td> 
+                        <td>{{registro.musica.st_nome}}</td> 
+                        <td><a href="{{registro.st_link_cifra}}" target="_blank">{{registro.st_link_cifra}}</a></td> 
+                        <td>{{registro.st_tom}}</td> 
+                        <td>
+                            <a href="#" ng-click="delete(registro.cd_musica)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td> 
+                    </tr> 
+                </tbody> 
+            </table>
+        </div>
+    </div>
+</div>
