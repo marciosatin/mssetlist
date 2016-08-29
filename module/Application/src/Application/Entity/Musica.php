@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="tbmusica")
+ * @ORM\Entity(repositoryClass="Application\Entity\MusicaRepository")
  */
 class Musica
 {

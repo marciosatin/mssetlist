@@ -51,4 +51,12 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                         );
                     }
                 };
+
+                $scope.submit = function(termSearch) {
+                    if (termSearch) {
+                        $scope.resultSearch = setlistSrv.search(
+                                {q: termSearch}
+                        );
+                    }
+                };
             }]);

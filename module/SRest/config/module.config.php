@@ -8,10 +8,12 @@ return array(
             'rest' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/api/:controller[/:id[/]]',
+                    'route' => '/api/:controller[/:action[/:q]][/:id[/]]',
                     'constraints' => array(
                         'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[a-zA-Z0-9_-]*'
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
+                        'q' => '.*',
                     )
                 )
             )

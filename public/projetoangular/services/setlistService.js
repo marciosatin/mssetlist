@@ -8,6 +8,11 @@ angular.module('myApp.setlist.service', ['ngResource'])
             {
                 update: {
                     method: 'PUT'
+                },
+                search: {
+                    method: 'GET',
+                    url: '/api/setlist/search/:q',
+                    isArray: true
                 }
             }
             );

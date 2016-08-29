@@ -7,6 +7,45 @@
 <div class="col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
+            <h3 class="panel-title">Adicionar música</h3>
+        </div>
+        <div class="panel-body">
+            <form name="formSearch" class="form-inline" role="search" ng-submit="submit(termSearch)">
+                <div class="form-group">
+                    <input type="text" ng-model="termSearch" class="form-control" id="termSearch" placeholder="Nome">
+                </div>
+                <button type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </form>
+            <table class="table"> 
+                <thead> 
+                    <tr> 
+                        <th>#</th> 
+                        <th>Código</th> 
+                        <th>Música</th> 
+                        <th>Ação</th> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <tr ng-repeat="result in resultSearch"> 
+                        <td><input type="checkbox" name="cdMusica" value="result.cd_musica"></td> 
+                        <td><a href="/#/musica/editar/{{result.cd_musica}}">{{result.cd_musica}}</a></td> 
+                        <td>{{result.st_nome}}</td> 
+                        <td>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td> 
+                    </tr> 
+                </tbody> 
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
             <h3 class="panel-title">Músicas adicionadas
                 <a href="/#/musica/novo/" class="pull-right">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
