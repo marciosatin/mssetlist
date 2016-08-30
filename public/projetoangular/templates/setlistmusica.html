@@ -24,22 +24,19 @@
                         <th>#</th> 
                         <th>Código</th> 
                         <th>Música</th> 
-                        <th>Ação</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr ng-repeat="result in resultSearch"> 
-                        <td><input type="checkbox" name="cdMusica" value="result.cd_musica"></td> 
-                        <td><a href="/#/musica/editar/{{result.cd_musica}}">{{result.cd_musica}}</a></td> 
-                        <td>{{result.st_nome}}</td> 
-                        <td>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a>
-                        </td> 
+                    <tr ng-repeat="musica in musicas"> 
+                        <td><input ng-model="musica.selecionada" type="checkbox" name="cdMusica" value="musica.cdMusicaArtista"></td> 
+                        <td><a href="/#/musica/editar/{{musica.cdMusicaArtista}}">{{musica.cdMusicaArtista}}</a></td> 
+                        <td>{{musica.stNome}}</td> 
                     </tr> 
                 </tbody> 
             </table>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-primary" ng-click="addSetlistItem(musicas)">Adicionar</button>
         </div>
     </div>
 </div>

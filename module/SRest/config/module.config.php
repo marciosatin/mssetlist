@@ -26,6 +26,7 @@ return array(
             'artista' => 'SRest\Controller\ArtistaController',
             'genero' => 'SRest\Controller\GeneroController',
             'setlist' => 'SRest\Controller\SetlistController',
+            'setlistitem' => 'SRest\Controller\SetlistitemController',
         )
     ),
     

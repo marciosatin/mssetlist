@@ -49,7 +49,7 @@ class SetlistController extends AbstractRestfulController
     {
         $q = $this->params()->fromRoute('q');
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $data = $em->getRepository('Application\Entity\Musica')->buscarPorNome($q);
+        $data = $em->getRepository('Application\Entity\MusicaArtista')->buscarPorNomeSetlistItem($q);
         return $data;
     }
 }

@@ -52,6 +52,11 @@ class Module
                     $setListService = new \Application\Service\Setlist($em);
                     return $setListService;
                 },
+                'Application\Service\SetlistItem' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $setListItemService = new \Application\Service\SetlistItem($em);
+                    return $setListItemService;
+                },
                 'Application\Service\Genero' => function($sm) {
                     $em = $sm->get('Doctrine\ORM\EntityManager');
                     $generoService = new \Application\Service\Genero($em);

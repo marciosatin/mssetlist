@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
-        .controller('setlistCtrl', ['$scope', 'setlistSrv', '$location', '$routeParams',
-            function($scope, setlistSrv, $location, $routeParams) {
+        .controller('setlistCtrl', ['$scope', 'setlistSrv', 'setlistItemSrv', '$location', '$routeParams',
+            function($scope, setlistSrv, setlistItemSrv, $location, $routeParams) {
                 $scope.load = function() {
                     $scope.registros = setlistSrv.query();
                 };
@@ -17,6 +17,28 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                             item,
                             function(data, status, headers, config) {
                                 $location.path('/');
+                            },
+                            function(data, status, headers, config) {
+                                alert('Erro ao inserir registro' + data.messages[0]);
+                            }
+                    );
+                };
+
+                $scope.addSetlistItem = function(musicas) {
+
+                    var itens = musicas.filter(function(musica) {
+                        if (musica.selecionada)
+                            return musica;
+                    });
+
+                    $scope.setListItens = setlistItemSrv.save(
+                            {id: $routeParams.id},
+                            itens,
+                            function(data, status, headers, config) {
+                                $scope.musicas = musicas.filter(function(musica) {
+                                    if (!musica.selecionada)
+                                        return musica;
+                                });
                             },
                             function(data, status, headers, config) {
                                 alert('Erro ao inserir registro' + data.messages[0]);
@@ -54,7 +76,7 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
 
                 $scope.submit = function(termSearch) {
                     if (termSearch) {
-                        $scope.resultSearch = setlistSrv.search(
+                        $scope.musicas = setlistSrv.search(
                                 {q: termSearch}
                         );
                     }
