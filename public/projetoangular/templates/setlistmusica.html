@@ -1,13 +1,17 @@
 <!--<ui-notify title="Houve um erro!" message="error"></ui-notify>-->
 <div class="col-xs-12">
     <div class="page-header" ng-init="get()">
-        <h1>Setlist: <small>{{item.st_nome}}</small></h1>
+        <h1>Setlist: <small>{{item.st_nome}} - ({{slitens.length}}) músicas</small></h1>
     </div>
 </div>
 <div class="col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Adicionar música</h3>
+            <h3 class="panel-title">Adicionar música
+                <a href="/#/musica/novo/" class="pull-right" title="Cadastrar música">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </h3>
         </div>
         <div class="panel-body">
             <form name="formSearch" class="form-inline" role="search" ng-submit="submit(termSearch)">
@@ -18,7 +22,8 @@
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
             </form>
-            <table class="table"> 
+            <p ng-show="musicas[0].errorMessage">{{musicas[0].errorMessage}}</p>
+            <table class="table" ng-hide="musicas[0].errorMessage"> 
                 <thead> 
                     <tr> 
                         <th>#</th> 
@@ -43,17 +48,12 @@
 <div class="col-xs-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Músicas adicionadas
-                <a href="/#/musica/novo/" class="pull-right">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </a>
-            </h3>
+            <h3 class="panel-title">Músicas adicionadas</h3>
         </div>
         <div class="panel-body">
             <table class="table"> 
                 <thead> 
                     <tr> 
-                        <th>#</th> 
                         <th>Música</th> 
                         <th>Link para cifra</th> 
                         <th>Tom</th> 
@@ -61,18 +61,22 @@
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr ng-repeat="registro in registros"> 
-                        <td><a href="/#/musica/editar/{{registro.cd_musica_artista}}">{{registro.cd_musica_artista}}</a></td> 
-                        <td>{{registro.musica.st_nome}}</td> 
-                        <td><a href="{{registro.st_link_cifra}}" target="_blank">{{registro.st_link_cifra}}</a></td> 
-                        <td>{{registro.st_tom}}</td> 
+                    <tr ng-repeat="slitem in slitens"> 
+                        <td>{{slitem.musicaartista.musica.st_nome}}</td> 
+                        <td><a href="{{slitem.musicaartista.st_link_cifra}}" target="_blank">{{slitem.musicaartista.st_link_cifra}}</a></td> 
+                        <td>{{slitem.musicaartista.st_tom}}</td> 
                         <td>
-                            <a href="#" ng-click="delete(registro.cd_musica)">
+                            <a href="#" ng-click="delete()">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </a>
                         </td> 
                     </tr> 
                 </tbody> 
+                <tfoot>
+                    <tr>
+                        <td colspan="5">{{slitens.length}} registros</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

@@ -15,7 +15,7 @@ class SetlistitemController extends AbstractRestfulController
 
     public function get($id) {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $data = $em->getRepository('Application\Entity\SetlistItem')->find($id);
+        $data = $em->getRepository('Application\Entity\SetlistItem')->findBy(array('cdSetlist' => $id));
         return $data;
     }
 

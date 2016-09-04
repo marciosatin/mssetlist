@@ -9,6 +9,11 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
 
                 $scope.get = function() {
                     $scope.item = setlistSrv.get({id: $routeParams.id});
+                    $scope.getItens();
+                };
+                
+                $scope.getItens = function() {
+                    $scope.slitens = setlistItemSrv.get({id: $routeParams.id});
                 };
 
                 $scope.add = function(item) {
@@ -39,6 +44,7 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                                     if (!musica.selecionada)
                                         return musica;
                                 });
+                                $scope.getItens();
                             },
                             function(data, status, headers, config) {
                                 alert('Erro ao inserir registro' + data.messages[0]);
@@ -77,7 +83,17 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                 $scope.submit = function(termSearch) {
                     if (termSearch) {
                         $scope.musicas = setlistSrv.search(
-                                {q: termSearch}
+                                {q: termSearch, id: $routeParams.id},
+                                {},
+                                function(data, status, headers, config) {
+                                    console.log(data);
+                                },
+                                function(data, status, headers, config) {
+                                    
+                                    console.log(data)
+                                    
+                                    alert('Erro ao pesquisar registro' + data[0].error);
+                                }
                         );
                     }
                 };

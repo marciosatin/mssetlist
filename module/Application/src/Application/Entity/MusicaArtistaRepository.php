@@ -7,11 +7,21 @@ use Doctrine\ORM\EntityRepository;
 class MusicaArtistaRepository extends EntityRepository
 {
 
-    public function buscarPorNomeSetlistItem($searchterm)
+    private function isValidSearch($cdSetList) {
+        $setList = $this->_em->getRepository('Application\Entity\Setlist')->find((int) $cdSetList);
+        if (null === $setList) {
+            throw new \Exception('Setlist inexistente.');
+        }
+    }
+
+    public function buscarPorNomeSetlistItem($cdSetList, $searchterm)
     {
-        return $this->_em->createQuery("SELECT ma.cdMusicaArtista, m.stNome FROM Application\Entity\MusicaArtista ma JOIN ma.musica m WHERE m.stNome like :searchterm")
+        $this->isValidSearch($cdSetList);
+        return $this->_em->createQuery("SELECT ma.cdMusicaArtista, m.stNome FROM Application\Entity\MusicaArtista ma JOIN ma.musica m WHERE ma.cdMusicaArtista NOT IN (SELECT si.cdMusicaArtista FROM Application\Entity\SetlistItem si WHERE si.cdSetlist = :cdSetlist) AND m.stNome like :searchterm")
                         ->setParameter('searchterm', '%' . $searchterm . '%')
-                        ->getResult();
+                        ->setParameter('cdSetlist', $cdSetList)
+                        ->getResult()
+                ;
     }
 
 }

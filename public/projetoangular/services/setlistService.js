@@ -11,7 +11,7 @@ angular.module('myApp.setlist.service', ['ngResource'])
                     },
                     search: {
                         method: 'GET',
-                        url: '/api/setlist/search/:q',
+                        url: '/api/setlist/search/:q/:id',
                         isArray: true
                     }
                 }
@@ -21,6 +21,11 @@ angular.module('myApp.setlist.service', ['ngResource'])
         .service('setlistItemSrv', ['$resource', function($resource) {
                 return $resource(
                         '/api/setlistitem/:id',
-                        {id: '@id'}
+                        {id: '@id'},
+                        {
+                            get: {
+                                isArray: true
+                            }
+                        }
                 );
             }]);

@@ -48,8 +48,19 @@ class SetlistController extends AbstractRestfulController
     public function searchAction()
     {
         $q = $this->params()->fromRoute('q');
+        $cdSetList = $this->params()->fromRoute('id');
+
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $data = $em->getRepository('Application\Entity\MusicaArtista')->buscarPorNomeSetlistItem($q);
+        try {
+            $data = $em->getRepository('Application\Entity\MusicaArtista')->buscarPorNomeSetlistItem($cdSetList, $q);
+        } catch (\Exception $exc) {
+            return array(
+                array(
+                    'errorCode' => $exc->getCode(),
+                    'errorMessage' => $exc->getMessage()
+                )
+            );
+        }
         return $data;
     }
 }

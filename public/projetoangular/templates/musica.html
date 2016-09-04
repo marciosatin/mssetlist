@@ -9,16 +9,20 @@
             </h3>
         </div>
         <div class="panel-body">
-            <form class="navbar-form navbar-left" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Nome">
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </span>
+            <div class="row">
+                <div class="col-xs-12">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Nome">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </span>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
             <table class="table"> 
-                <thead> 
+                <thead>
                     <tr> 
                         <th>#</th> 
                         <th>Música</th> 
@@ -46,6 +50,11 @@
                         </td> 
                     </tr> 
                 </tbody> 
+                <tfoot>
+                    <tr>
+                        <td colspan="5">{{registros.length}} registros</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

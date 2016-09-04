@@ -38,17 +38,17 @@ class MusicaController extends AbstractRestfulController
     {
         $serviceMusica = $this->getServiceLocator()->get('Application\Service\Musica');
         
-        $param['cdMusica'] = (int) $data['musicaId'];
+        $param['cdMusica'] = (int) $data['musica']['cd_musica'];
         $param['stNome'] = (string) $data['musica']['st_nome'];
 
         $musica = $serviceMusica->update($param);
         
         $dataUpdate = array(
             'cdMusicaArtista' => (int) $cdMusica,
-            'stLinkV' => (string) $data['st_link_video'],
-            'stLinkC' => (string) $data['st_link_cifra'],
-            'stTempoDuracao' => $data['st_tempo_duracao'],
-            'stTom' => (string) $data['st_tom'],
+            'stLinkV' => isset($data['st_link_video']) ? (string) $data['st_link_video'] : null,
+            'stLinkC' => isset($data['st_link_cifra']) ? (string) $data['st_link_cifra'] : null,
+            'stTempoDuracao' => isset($data['st_tempo_duracao']) ? $data['st_tempo_duracao'] : null,
+            'stTom' => isset($data['st_tom']) ? (string) $data['st_tom'] : null,
         );
 
         if (isset($data['artistaId'])) {
