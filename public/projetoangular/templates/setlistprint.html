@@ -1,0 +1,42 @@
+<!--<ui-notify title="Houve um erro!" message="error"></ui-notify>-->
+<div class="col-xs-12 title-setlist">
+    <div class="page-header" ng-init="get()">
+        <h1>Setlist: <small>{{item.st_nome}} - ({{slitens.length}}) músicas</small></h1>
+    </div>
+</div>
+<div class="col-xs-12 musicas-adicionadas">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!--<h3 class="panel-title">Músicas adicionadas</h3>-->
+        </div>
+        <div class="panel-body">
+            <table class="table musicas-setlist"> 
+                <thead> 
+                    <tr> 
+                        <th>Música</th> 
+                        <!--<th>Link para cifra</th>--> 
+                        <th>Tom</th> 
+                        <!--<th>Ação</th>--> 
+                    </tr> 
+                </thead> 
+                <tbody> 
+                    <tr ng-repeat="slitem in slitens"> 
+                        <td>{{slitem.musicaartista.musica.st_nome}}</td> 
+<!--                        <td><a href="{{slitem.musicaartista.st_link_cifra}}" target="_blank">{{slitem.musicaartista.st_link_cifra}}</a></td> -->
+                        <td>{{slitem.musicaartista.st_tom}}</td> 
+<!--                        <td>
+                            <a href="#" ng-click="delete()">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td> -->
+                    </tr> 
+                </tbody> 
+<!--                <tfoot>
+                    <tr>
+                        <td colspan="5">{{slitens.length}} registros</td>
+                    </tr>
+                </tfoot>-->
+            </table>
+        </div>
+    </div>
+</div>

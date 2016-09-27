@@ -25,6 +25,10 @@ angular.module('myApp', ['ngRoute', 'myApp.musica.controller', 'myApp.setlist.co
                     templateUrl: 'projetoangular/templates/setlistmusica.html',
                     controller: 'setlistCtrl'
                 })
+                .when('/setlist/print/:id', {
+                    templateUrl: 'projetoangular/templates/setlistprint.html',
+                    controller: 'setlistCtrl'
+                })
                 .when('/setlist/editar/:id', {
                     templateUrl: 'projetoangular/templates/editarsetlist.html',
                     controller: 'setlistCtrl'
