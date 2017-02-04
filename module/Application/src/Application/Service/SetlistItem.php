@@ -39,21 +39,20 @@ class SetlistItem
 
                 $this->em->persist($setlistItemEntity);
                 $this->em->flush();
-
             }
         }
         return array('success' => true);
     }
 
-    public function delete($cdMusica)
+    public function delete($cdSetlistItem)
     {
-        $musicaEntity = $this->em
-                ->getReference('Application\Entity\Musica', $cdMusica);
+        $setListItemEntity = $this->em
+                ->getReference('Application\Entity\SetlistItem', $cdSetlistItem);
 
-        $this->em->remove($musicaEntity);
+        $this->em->remove($setListItemEntity);
         $this->em->flush();
 
-        return $cdMusica;
+        return $cdSetlistItem;
     }
 
 }

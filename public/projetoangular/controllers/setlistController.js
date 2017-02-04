@@ -80,6 +80,22 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                     }
                 };
 
+                $scope.deleteSetlistItem = function(id) {
+                    $scope.referId = $routeParams.id;
+                    if (confirm("Deseja realmente excluir o registro?")) {
+                        setlistItemSrv.remove(
+                                {id: id},
+                        {},
+                                function(data, status, headers, config) {
+                                    $location.path('/setlist/musica/' + $scope.referId);
+                                },
+                                function(data, status, headers, config) {
+                                    alert('Erro ao editar registro' + data.messages[0]);
+                                }
+                        );
+                    }
+                };
+
                 $scope.submit = function(termSearch) {
                     if (termSearch) {
                         $scope.musicas = setlistSrv.search(
@@ -90,7 +106,7 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                                 },
                                 function(data, status, headers, config) {
                                     
-                                    console.log(data)
+                                    console.log(data);
                                     
                                     alert('Erro ao pesquisar registro' + data[0].error);
                                 }

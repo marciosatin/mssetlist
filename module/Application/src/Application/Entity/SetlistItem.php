@@ -14,11 +14,16 @@ class SetlistItem
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    private $cdSetlistItem;
+
+    /**
+     * @ORM\Column(type="integer")
      */
     private $cdSetlist;
 
     /**
-     * @ORM\Id
      * @ORM\Column(type="integer")
      */
     private $cdMusicaArtista;
@@ -96,4 +101,15 @@ class SetlistItem
     {
         $this->musicaartista = $musicaartista;
     }
+
+    public function getCdSetlistItem()
+    {
+        return $this->cdSetlistItem;
+    }
+
+    public function setCdSetlistItem($cdSetlistItem)
+    {
+        $this->cdSetlistItem = $cdSetlistItem;
+    }
+
 }

@@ -27,10 +27,10 @@ class SetlistitemController extends AbstractRestfulController
         return ($setlistItem) ? $setlistItem : array('success' => false);
     }
 
-    public function delete($cdSetlist)
+    public function delete($cdSetlistItem)
     {
         $serviceSetlist = $this->getServiceLocator()->get('Application\Service\SetlistItem');
-        $cdSetlist = $serviceSetlist->delete($cdSetlist);
-        return ($cdSetlist) ? $cdSetlist : array('success' => false);
+        $cdSetlistItem = $serviceSetlist->delete($cdSetlistItem);
+        return ($cdSetlistItem) ? $cdSetlistItem : array('success' => false);
     }
 }
