@@ -93,7 +93,7 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                                     alert('Erro ao editar registro' + data.messages[0]);
                                 }
                         );
-                    }
+                    } 
                 };
 
                 $scope.submit = function(termSearch) {
@@ -112,5 +112,9 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                                 }
                         );
                     }
+                };
+                
+                $scope.locationUrl = function(url) {
+                    $location.path(url);
                 };
             }]);

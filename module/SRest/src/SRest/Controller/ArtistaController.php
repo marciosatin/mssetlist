@@ -9,7 +9,9 @@ class ArtistaController extends AbstractRestfulController
 
     public function getList() {
         $em = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $data = $em->getRepository('Application\Entity\Artista')->findAll();
+        $data = $em->getRepository('Application\Entity\Artista')->findBy(array(), array(
+            'stNome' => 'ASC'
+        ));
         return $data;
     }
 
