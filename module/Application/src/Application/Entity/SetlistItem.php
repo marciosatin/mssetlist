@@ -46,11 +46,15 @@ class SetlistItem
      */
     private $dtCadastro;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $ordem;
+
     public function __construct()
     {
         $this->dtCadastro = new \DateTime();
     }
-
 
     public function getDtCadastro()
     {
@@ -110,6 +114,16 @@ class SetlistItem
     public function setCdSetlistItem($cdSetlistItem)
     {
         $this->cdSetlistItem = $cdSetlistItem;
+    }
+
+    public function getOrdem()
+    {
+        return $this->ordem;
+    }
+
+    public function setOrdem($ordem)
+    {
+        $this->ordem = $ordem;
     }
 
 }

@@ -64,10 +64,10 @@ class SetlistItem extends \Application\Entity\SetlistItem implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlistItem', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdMusicaArtista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'setlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'musicaartista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'dtCadastro');
+            return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlistItem', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdMusicaArtista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'setlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'musicaartista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'dtCadastro', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'ordem');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlistItem', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdMusicaArtista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'setlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'musicaartista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'dtCadastro');
+        return array('__isInitialized__', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlistItem', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdSetlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'cdMusicaArtista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'setlist', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'musicaartista', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'dtCadastro', '' . "\0" . 'Application\\Entity\\SetlistItem' . "\0" . 'ordem');
     }
 
     /**
@@ -307,6 +307,28 @@ class SetlistItem extends \Application\Entity\SetlistItem implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCdSetlistItem', array($cdSetlistItem));
 
         return parent::setCdSetlistItem($cdSetlistItem);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrdem()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrdem', array());
+
+        return parent::getOrdem();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOrdem($ordem)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrdem', array($ordem));
+
+        return parent::setOrdem($ordem);
     }
 
 }

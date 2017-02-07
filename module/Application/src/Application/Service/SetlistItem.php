@@ -44,6 +44,26 @@ class SetlistItem
         return array('success' => true);
     }
 
+    public function update(array $data)
+    {
+        $ordem = 0;
+        $dataUpdate = array();
+        foreach ($data['itens'] as $item) {
+
+            $dataUpdate['cdSetListItem'] = (int) $item['cd_setlist_item'];
+
+            $setListItemEntity = $this->em
+                    ->getReference('Application\Entity\SetlistItem', $dataUpdate['cdSetListItem']);
+
+            $setListItemEntity->setOrdem($ordem);
+            $this->em->persist($setListItemEntity);
+            $this->em->flush();
+
+            $ordem++;
+        }
+        return array('success' => true);
+    }
+
     public function delete($cdSetlistItem)
     {
         $setListItemEntity = $this->em

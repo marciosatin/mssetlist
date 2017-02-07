@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
+angular.module('myApp.setlist.controller', ['myApp.setlist.service', 'ui.sortable'])
         .controller('setlistCtrl', ['$scope', 'setlistSrv', 'setlistItemSrv', '$location', '$routeParams',
             function($scope, setlistSrv, setlistItemSrv, $location, $routeParams) {
                 $scope.load = function() {
@@ -11,9 +11,32 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                     $scope.item = setlistSrv.get({id: $routeParams.id});
                     $scope.getItens();
                 };
-                
+
                 $scope.getItens = function() {
                     $scope.slitens = setlistItemSrv.get({id: $routeParams.id});
+                };
+
+                $scope.sortableOptions = {
+                    update: function(e, ui) {
+                        console.log(e);
+                        console.log(ui);
+                        console.log($scope.slitens);
+                        $scope.updateItens($scope.slitens);
+                    }
+                };
+
+                $scope.updateItens = function(item) {
+                    $scope.referId = $routeParams.id;
+                    setlistItemSrv.update(
+                            {id: $routeParams.id},
+                    item,
+                            function(data, status, headers, config) {
+//                                $location.path('/setlist/musica/' + $scope.referId);
+                            },
+                            function(data, status, headers, config) {
+                                alert('Erro ao editar registro' + data.messages[0]);
+                            }
+                    );
                 };
 
                 $scope.add = function(item) {
@@ -38,7 +61,7 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
 
                     $scope.setListItens = setlistItemSrv.save(
                             {id: $routeParams.id},
-                            itens,
+                    itens,
                             function(data, status, headers, config) {
                                 $scope.musicas = musicas.filter(function(musica) {
                                     if (!musica.selecionada)
@@ -92,21 +115,21 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service'])
                                     alert('Erro ao editar registro' + data.messages[0]);
                                 }
                         );
-                    } 
+                    }
                 };
 
                 $scope.submit = function(termSearch) {
                     if (termSearch) {
                         $scope.musicas = setlistSrv.search(
                                 {q: termSearch, id: $routeParams.id},
-                                {},
+                        {},
                                 function(data, status, headers, config) {
                                     console.log(data);
                                 },
                                 function(data, status, headers, config) {
-                                    
+
                                     console.log(data);
-                                    
+
                                     alert('Erro ao pesquisar registro' + data[0].error);
                                 }
                         );

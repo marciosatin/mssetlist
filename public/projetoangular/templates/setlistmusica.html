@@ -55,6 +55,14 @@
             </h3>
         </div>
         <div class="panel-body">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="criterioDeBusca" placeholder="Nome">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </span>
+                </div>
+            </form>
             <table class="table musicas-setlist"> 
                 <thead> 
                     <tr> 
@@ -64,8 +72,8 @@
                         <th>Ação</th> 
                     </tr> 
                 </thead> 
-                <tbody> 
-                    <tr ng-repeat="slitem in slitens"> 
+                <tbody ui-sortable="sortableOptions" ng-model="slitens"> 
+                    <tr ng-repeat="slitem in slitens | filter:criterioDeBusca"> 
                         <td>{{slitem.musicaartista.musica.st_nome}}</td> 
                         <td><a href="{{slitem.musicaartista.st_link_cifra}}" target="_blank">{{slitem.musicaartista.st_link_cifra}}</a></td> 
                         <td>{{slitem.musicaartista.st_tom}}</td> 

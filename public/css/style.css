@@ -17,3 +17,7 @@
         display: none;
     }
 }
+
+.musicas-setlist tbody tr {
+    cursor: move;
+}

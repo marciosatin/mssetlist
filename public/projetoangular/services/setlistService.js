@@ -22,10 +22,13 @@ angular.module('myApp.setlist.service', ['ngResource'])
                 return $resource(
                         '/api/setlistitem/:id',
                         {id: '@id'},
-                        {
-                            get: {
-                                isArray: true
-                            }
-                        }
+                {
+                    get: {
+                        isArray: true
+                    },
+                    update: {
+                        method: 'PUT'
+                    }
+                }
                 );
             }]);
