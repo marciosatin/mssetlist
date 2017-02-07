@@ -34,7 +34,7 @@ class ArtistaController extends AbstractRestfulController
         $serviceArtista = $this->getServiceLocator()->get('Application\Service\Artista');
 
         $param['cdArtista'] = $cdArtista;
-        $param['stNome'] = $data['stNome'];
+        $param['stNome'] = $data['st_nome'];
 
         $artista = $serviceArtista->update($param);
         return ($artista) ? $artista : array('success' => false);
