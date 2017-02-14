@@ -16,11 +16,19 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service', 'ui.sortabl
                     $scope.slitens = setlistItemSrv.get({id: $routeParams.id});
                 };
 
+                /**
+                 * Sortable itens table rows
+                 */
+                var fixHelper = function(e, ui) {
+                    ui.children().each(function() {
+                        $(this).width($(this).width());
+                    });
+                    return ui;
+                };
+
                 $scope.sortableOptions = {
+                    helper: fixHelper,
                     update: function(e, ui) {
-                        console.log(e);
-                        console.log(ui);
-                        console.log($scope.slitens);
                         $scope.updateItens($scope.slitens);
                     }
                 };
@@ -38,6 +46,9 @@ angular.module('myApp.setlist.controller', ['myApp.setlist.service', 'ui.sortabl
                             }
                     );
                 };
+                /**
+                 * Fim sortable itens table rows
+                 */
 
                 $scope.add = function(item) {
                     $scope.result = setlistSrv.save(
