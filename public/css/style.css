@@ -18,6 +18,10 @@
     }
 }
 
+table thead tr th {
+    cursor: pointer;
+}
+
 .musicas-setlist tbody tr {
     cursor: move;
 }

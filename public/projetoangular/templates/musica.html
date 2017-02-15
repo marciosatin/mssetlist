@@ -24,15 +24,21 @@
             <table class="table"> 
                 <thead>
                     <tr> 
-                        <th>#</th> 
-                        <th>Música</th> 
+                        <th ng-click="sort('cd_musica_artista')">#
+                            <span class="glyphicon sort-icon" ng-show="sortKey == 'cd_musica_artista'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th> 
+                        <th ng-click="sort('musica.st_nome')">Música
+                            <span class="glyphicon sort-icon" ng-show="sortKey == 'musica.st_nome'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th> 
                         <th>Link para cifra</th> 
-                        <th>Tom</th> 
+                        <th ng-click="sort('st_tom')">Tom
+                            <span class="glyphicon sort-icon" ng-show="sortKey == 'st_tom'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                        </th> 
                         <th>Ação</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr ng-repeat="registro in registros| filter:criterioDeBusca"> 
+                    <tr dir-paginate="registro in registros|orderBy:sortKey:reverse|filter:criterioDeBusca|itemsPerPage:15"> 
                         <td><a href="/#/musica/editar/{{registro.cd_musica_artista}}">{{registro.cd_musica_artista}}</a></td> 
                         <td>{{registro.musica.st_nome}}</td> 
                         <td><a href="{{registro.st_link_cifra}}" target="_blank">{{registro.st_link_cifra}}</a></td> 
@@ -52,10 +58,15 @@
                 </tbody> 
                 <tfoot>
                     <tr>
-                        <td colspan="5">{{registros.length}} registros</td>
+                        <td colspan="5">Total: {{registros.length}} registros</td>
                     </tr>
                 </tfoot>
             </table>
+            <dir-pagination-controls 
+                max-size="10" 
+                direction-links="true" 
+                boundary-links="true">
+            </dir-pagination-controls>
         </div>
     </div>
 </div>

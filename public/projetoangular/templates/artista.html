@@ -20,13 +20,15 @@
             <table class="table"> 
                 <thead> 
                     <tr> 
-                        <th>#</th> 
-                        <th>Nome</th> 
+                        <th ng-click="sort('cd_artista')">#
+                            <span class="glyphicon sort-icon" ng-show="sortKey == 'cd_artista'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
+                        <th ng-click="sort('st_nome')">Nome
+                            <span class="glyphicon sort-icon" ng-show="sortKey == 'st_nome'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th> 
                         <th>Ação</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr ng-repeat="registro in registros | filter:criterioDeBusca"> 
+                    <tr dir-paginate="registro in registros|orderBy:sortKey:reverse|filter:criterioDeBusca|itemsPerPage:15"> 
                         <td><a href="/#/artista/editar/{{registro.cd_artista}}">{{registro.cd_artista}}</a></td> 
                         <td>{{registro.st_nome}}</td> 
                         <td>
@@ -37,6 +39,11 @@
                     </tr> 
                 </tbody> 
             </table>
+            <dir-pagination-controls 
+                max-size="10" 
+                direction-links="true" 
+                boundary-links="true">
+            </dir-pagination-controls>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 angular.module('myApp', ['ngRoute', 'myApp.musica.controller',
     'myApp.setlist.controller',
-    'myApp.artista.controller'])
+    'myApp.artista.controller',
+    'angularUtils.directives.dirPagination'])
         .config(['$routeProvider', function($routeProvider) {
                 $routeProvider
                         .when('/', {
